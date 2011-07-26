@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+  
+        <record model="ir.ui.view" id="res_partner_price_for_partner">
+            <field name="name">res.partner.price_for_partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="arch" type="xml">
+	                <notebook position="inside">        
+				  <page string="Prezzi e Sconti Speciali">
+				      <separator colspan="4" string="Regole Listini"/>
+				       <field colspan="4" name="priceforpartner" nolabel="1" context="{'form_view_ref':'product.product_pricelist_item_form_view'}"/>
+				  </page>
+			</notebook>
+
+		  </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_tree_address1">
+            <field name="name">res.partner.tree_address1</field>
+            <field name="model">res.partner.address</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+                <field name="arch" type="xml">
+		  <field name="city" position="after">
+		      <field name="street"/>
+		    </field>
+		  </field>
+		</record>
+
+
+    
+    </data>
+ </openerp>

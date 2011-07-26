@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+  
+        <record model="ir.ui.view" id="price_for_partner">
+            <field name="name">product.pricelist.item.form</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+                <field name="arch" type="xml">
+		  <field name="product_id" position="before">
+		      <field name="price_version_id"/>	
+		      <newline/>
+		  </field>
+		  <field name="categ_id" position="after">	
+		  		<newline/>	    
+		    	<field name="partner_id"/>
+		  </field>
+		<field name="base_pricelist_id" position="after">
+			<newline/>
+		    	<field name="string_discount" on_change="Calcolo_Sconto(string_discount)"/>
+		 </field>
+		  
+		</field>
+		
+        </record>
+
+           <record model="ir.ui.view" id="price_for_partner1">
+            <field name="name">product.pricelist.item.tree</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
+                <field name="arch" type="xml">
+		  <field name="sequence" position="before">
+		      <field name="price_version_id"/>		      
+		  </field>
+
+		  <field name="categ_id" position="after">		    
+		    	<field name="partner_id"/>
+			<field name="string_discount" />
+		  </field>
+
+
+		 </field>
+		  
+		
+        </record>
+ 
+    	<record model="ir.ui.view" id="view_order_form_disco">
+    		<field name="name">view.order.form.disco</field>
+    		<field name="model">sale.order</field>
+    		<field name="inherit_id" ref="sale.view_order_form"/>
+    		<field name="arch" type="xml">
+    			<field name="price_unit" position="after">
+    				<newline/>
+    				<field name="string_discount" on_change="Calcolo_Sconto(string_discount)"/>		      
+    			</field>
+    		</field>
+    	</record>
+    			
+    </data>
+ </openerp>
